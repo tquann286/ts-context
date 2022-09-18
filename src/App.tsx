@@ -1,12 +1,14 @@
 import React from 'react'
 import './App.css'
+import ProgressContextProvider from './components/contexts/ContextProgress'
 import Navbar from './components/Navbar'
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-
+      <ProgressContextProvider>
+        <Navbar />
+      </ProgressContextProvider>
     </div>
   )
 }

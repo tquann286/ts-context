@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Toolbar, AppBar, Box, Typography, FormControl, Select, MenuItem, SelectChangeEvent, Button, Chip } from '@mui/material'
 import WelcomeMessage from './WelcomeMessage'
+import { ProgressContext } from './contexts/ContextProgress'
 
 const Navbar = () => {
   const [position, setPosition] = useState<string>('Full-stack Developer')
   const [time, setTime] = useState<Date>(() => new Date(Date.now()))
+
+  const { lastTime, status } = useContext(ProgressContext)
 
   useEffect(() => {
     const timer = setInterval(() => setTime(() => new Date(Date.now())), 1000)
@@ -31,7 +34,7 @@ const Navbar = () => {
           <Typography variant='h6'>My Movies</Typography>
           <Box sx={{ textAlign: 'center' }}>
             <WelcomeMessage position={position} />
-            <Chip label={`Last time working on this project: 17/09/2022 - Status: In Progress`} />
+            <Chip label={`Last time working on this project: ${lastTime} - Status: In Progress`} />
             <Box mt={1}>
               <FormControl>
                 <Select value={position} onChange={onPositionChange}>
