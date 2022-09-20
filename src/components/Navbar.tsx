@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Toolbar, AppBar, Box, Typography, FormControl, Select, MenuItem, SelectChangeEvent, Button, Chip } from '@mui/material'
 import WelcomeMessage from './WelcomeMessage'
-import { ProgressContext } from './contexts/ProgressContext'
+import { ProgressContext } from '../contexts/ProgressContext'
+import { ThemeContext } from '../contexts/ThemeContext'
 
 const Navbar = () => {
   const [position, setPosition] = useState<string>('Full-stack Developer')
   const [time, setTime] = useState<Date>(() => new Date(Date.now()))
 
   const { lastTime, status } = useContext(ProgressContext)
+  const { theme } = useContext(ThemeContext)
 
   useEffect(() => {
     const timer = setInterval(() => setTime(() => new Date(Date.now())), 1000)
@@ -28,7 +30,7 @@ const Navbar = () => {
   const onPositionChange = (event: SelectChangeEvent<string>) => setPosition(event.target.value)
 
   return (
-    <AppBar position='static' color='primary'>
+    <AppBar position='static' color={theme}>
       <Toolbar>
         <Box {...boxProps}>
           <Typography variant='h6'>My Movies</Typography>

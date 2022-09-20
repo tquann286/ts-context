@@ -1,3 +1,4 @@
+import { PropTypes } from '@mui/material'
 import { createContext, ReactNode, useState } from 'react'
 
 interface ThemeContextProps {
@@ -5,21 +6,21 @@ interface ThemeContextProps {
 }
 
 interface ThemeContextDefault {
-  theme: string
+  theme: PropTypes.Color
 }
 
 const themeDefault = {
-  theme: 'light'
+  theme: 'primary' as PropTypes.Color
 }
 
 export const ThemeContext = createContext<ThemeContextDefault>(themeDefault)
 
 const ThemeContextProvider = ({ children }: ThemeContextProps) => {
-  const [theme, setTheme] = useState(themeDefault.theme)
+  const [theme, setTheme] = useState<PropTypes.Color>(themeDefault.theme)
 
-  const toggleTheme = (theme: string) => setTheme(theme)
+  const toggleTheme = (theme: PropTypes.Color) => setTheme(theme)
 
-  const themeContextDynamicData: { theme: string, toggleTheme: Function } = { theme, toggleTheme }
+  const themeContextDynamicData: { theme: PropTypes.Color, toggleTheme: Function } = { theme, toggleTheme }
 
   return (
     <ThemeContext.Provider value={themeContextDynamicData}>{children}</ThemeContext.Provider>

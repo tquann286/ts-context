@@ -1,14 +1,18 @@
-import React from 'react'
 import './App.css'
-import ProgressContextProvider from './components/contexts/ProgressContext'
+import ProgressContextProvider from './contexts/ProgressContext'
+import ThemeContextProvider from './contexts/ThemeContext'
 import Navbar from './components/Navbar'
+import ToggleThemeBtn from './components/ToggleThemeBtn'
 
 const App = () => {
   return (
     <div>
-      <ProgressContextProvider>
-        <Navbar />
-      </ProgressContextProvider>
+      <ThemeContextProvider>
+        <ProgressContextProvider>
+          <Navbar />
+          <ToggleThemeBtn />
+        </ProgressContextProvider>
+      </ThemeContextProvider>
     </div>
   )
 }
