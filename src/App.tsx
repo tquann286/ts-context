@@ -4,6 +4,7 @@ import ThemeContextProvider from './contexts/ThemeContext'
 import MovieContextProvider from './contexts/MovieContext'
 import Navbar from './components/Navbar'
 import ToggleThemeBtn from './components/ToggleThemeBtn'
+import Movies from './components/Movies'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <ThemeContextProvider>
           <ProgressContextProvider>
             <Navbar />
+            <Movies />
             <ToggleThemeBtn />
           </ProgressContextProvider>
         </ThemeContextProvider>
