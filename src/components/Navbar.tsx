@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Toolbar, AppBar, Box, Typography, FormControl, Select, MenuItem, SelectChangeEvent, Button, Chip } from '@mui/material'
 import WelcomeMessage from './WelcomeMessage'
-import { ProgressContext } from './contexts/ContextProgress'
+import { ProgressContext } from './contexts/ProgressContext'
 
 const Navbar = () => {
   const [position, setPosition] = useState<string>('Full-stack Developer')

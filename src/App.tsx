@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import ProgressContextProvider from './components/contexts/ContextProgress'
+import ProgressContextProvider from './components/contexts/ProgressContext'
 import Navbar from './components/Navbar'
 
 const App = () => {
