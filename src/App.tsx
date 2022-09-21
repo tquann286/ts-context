@@ -8,29 +8,31 @@ import MovieContextProvider from './contexts/MovieContext'
 import AuthContextProvider from './contexts/AuthContext'
 import { Grid } from '@mui/material'
 import TopMovie from './components/TopMovie'
+import TopMovieContextProvider from './contexts/TopMovieContext'
 
 const App = () => {
   return (
     <div>
-      <AuthContextProvider>
-        <MovieContextProvider>
-          <ThemeContextProvider>
-            <ProgressContextProvider>
-              <Navbar />
-              <Grid container>
-                <Grid item xs={4}>
-                  <TopMovie />
+      <TopMovieContextProvider>
+        <AuthContextProvider>
+          <MovieContextProvider>
+            <ThemeContextProvider>
+              <ProgressContextProvider>
+                <Navbar />
+                <Grid container>
+                  <Grid item xs={4}>
+                    <TopMovie />
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Movies />
+                  </Grid>
                 </Grid>
-                <Grid item xs={8}>
-                  <Movies />
-                </Grid>
-              </Grid>
-              <Movies />
-              <ToggleThemeBtn />
-            </ProgressContextProvider>
-          </ThemeContextProvider>
-        </MovieContextProvider>
-      </AuthContextProvider>
+                <ToggleThemeBtn />
+              </ProgressContextProvider>
+            </ThemeContextProvider>
+          </MovieContextProvider>
+        </AuthContextProvider>
+      </TopMovieContextProvider>
     </div>
   )
 }
