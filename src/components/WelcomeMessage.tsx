@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { Box } from '@mui/material'
+import { AuthContext } from './../contexts/AuthContext'
 
 interface WelcomeMessageProps {
   position: string,
@@ -7,10 +8,11 @@ interface WelcomeMessageProps {
 }
 
 const WelcomeMessage: FC<WelcomeMessageProps> = ({ position, country = 'Vietnam' }) => {
+  const { authInfo: { username } } = useContext(AuthContext)
 
   
   return (
-    <Box mb={1}>Welcome {position} from {country}</Box>
+    <Box mb={1}>Welcome {username} - {position} from {country}</Box>
   )
 }
 

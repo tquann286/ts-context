@@ -3,6 +3,8 @@ import { Toolbar, AppBar, Box, Typography, FormControl, Select, MenuItem, Select
 import WelcomeMessage from './WelcomeMessage'
 import { ProgressContext } from '../contexts/ProgressContext'
 import { ThemeContext } from '../contexts/ThemeContext'
+import Login from './Login'
+import { AuthContext } from './../contexts/AuthContext'
 
 const Navbar = () => {
   const [position, setPosition] = useState<string>('Full-stack Developer')
@@ -10,6 +12,9 @@ const Navbar = () => {
 
   const { lastTime, status } = useContext(ProgressContext)
   const { theme } = useContext(ThemeContext)
+  const { authInfo: { isAuthenticated }, toggleAuth } = useContext(AuthContext)
+
+  const [loginOpen, setLoginOpen] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => setTime(() => new Date(Date.now())), 1000)
@@ -50,11 +55,12 @@ const Navbar = () => {
           <Box textAlign='center'>
             <Box my={1}>
               <Typography variant='h6'>{time.toUTCString()}</Typography>
-              <Button color='primary' variant='contained'>
-                Login
+              <Button color='primary' variant='contained' onClick={isAuthenticated ? toggleAuth.bind(this, '') : setLoginOpen.bind(this, true)}>
+                {isAuthenticated ? 'Logout' : 'Login'}
               </Button>
             </Box>
           </Box>
+          <Login isOpen={loginOpen} handleClose={setLoginOpen} />
         </Box>
       </Toolbar>
     </AppBar>
